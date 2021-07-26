@@ -50,8 +50,8 @@ app.use(cors({
     origin: [
       'http://localhost:8080',
       'https://localhost:8080',
-      'http://vuejslearningapp.herokuapp.com/',
-      'https://vuejslearningapp.herokuapp.com/'
+      'http://vuejswebsite.herokuapp.com',
+      'https://vuejswebsite.herokuapp.com'
     ],
     credentials: true,
     exposedHeaders: ['set-cookie']
