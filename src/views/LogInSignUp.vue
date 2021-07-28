@@ -1,7 +1,12 @@
 <template>
-    <h1><strong>Welcome to Tweet-t-t</strong></h1>
-    <LogIn/>
-    <SignUp/>
+    <div class= "body">
+        <div class="log_in">
+            <LogIn/>
+        </div>
+        <div class="sign_up">
+            <SignUp/>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -16,5 +21,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.body{
+    .log_in{
+        width: 50%;
+        float: left
+    }
+    .sign_up{
+        width: 50%;
+        float: right
+    }
+}
 </style>

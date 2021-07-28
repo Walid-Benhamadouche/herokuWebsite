@@ -13,7 +13,7 @@ const genuuid = require('uuid/v4');
 const serveStatic = require('serve-static')
 const path = require('path')
 
-mongoose.connect('mongodb+srv://desire:2PYOJT9onGrw8xah@cluster0.gkabw.mongodb.net/tweet-t-t?retryWrites=true&w=majority',{ useNewUrlParser: true,useUnifiedTopology: true },()=>{console.log("connected to mongo")})
+mongoose.connect(process.env.DB_CONNECTION,{ useNewUrlParser: true,useUnifiedTopology: true },()=>{console.log("connected to mongo")})
 
 //`Hi! Server is listening on port ${port}`
 const server = require('http').Server(app)
@@ -34,7 +34,7 @@ io.on('connection', (socket) => {
 
 const store = new MongoDBStore(
     {
-    uri: 'mongodb+srv://desire:2PYOJT9onGrw8xah@cluster0.gkabw.mongodb.net/tweet-t-t?retryWrites=true&w=majority',
+    uri: process.env.DB_CONNECTION,
     databaseName: 'tweet-t-t',
     collection: 'mySession',
     ttl: 24 * 60 * 60,
@@ -59,7 +59,7 @@ app.use(cors({
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json({ limit: '50mb'}))
 app.use(session({
-    secret: 'somesecretfortest',
+    secret: process.env.SESSION_SECRET,
     store: store,
     name: "testcookie",
     genid: function(req) {
@@ -71,7 +71,7 @@ app.use(session({
     cookie: {
         httpOnly: false,
         secure: false,
-        maxAge: parseInt(86400000)
+        maxAge: parseInt(process.env.SESSION_MAX_AGE)
     }
 }))
 

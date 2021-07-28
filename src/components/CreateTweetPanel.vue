@@ -2,14 +2,8 @@
   <form action="" class="user-profile__create-tweet" @submit.prevent="creatNewTweet" 
     :class="{'exceeded': newTweetCharacterCount > 180}">
         <label for="newtweet"><strong>New Tweet</strong> {{newTweetCharacterCount}}/180</label>
-        <textarea id="newtweet" rows="4" v-model="state.newTweetContent"/>
+        <textarea id="newtweet" extarea style="resize: none;" rows="4" v-model="state.newTweetContent"/>
         <div class="user-profile__createtweet-type">
-            <label for="newTweetType"><strong>Type :</strong></label>
-            <select id="newTweetType" v-model="state.selectedTweetType">
-                <option :value="option.value" v-for="(option,index) in state.TweetTypes" :key="index">
-                    {{option.name}}
-                </option>
-            </select>
         </div>
     <button>
         tweet-t-t
@@ -25,17 +19,12 @@ export default {
     setup(props, ctx) {
         const state = reactive({
             newTweetContent: '',
-            selectedTweetType: 'instant',
-            TweetTypes: [
-            {value: 'draft', name: 'Draft'},
-            {value: 'instant', name: 'Instant'}
-            ],
         })
 
         const newTweetCharacterCount = computed(()=> state.newTweetContent.length)
 
         function creatNewTweet() {
-            if(state.newTweetContent && state.selectedTweetType!="draft") 
+            if(state.newTweetContent) 
             {
                 ctx.emit('addTweet', state.newTweetContent)
                 state.newTweetContent = '';
@@ -67,12 +56,24 @@ export default {
             color: white;
 
             button {
+                margin-top: 0.5em;
                 border-radius: 20px;
                 border: 1.5px solid #2d3436;
                 height: 50px;
                 width: 120px;
                 background-color: #2d3436;
                 color: white;
+                transition: 0.25s;
+            }
+            button:hover {
+                margin-top: 0.5em;
+                border-radius: 20px;
+                border: 1.5px solid rgb(69, 69, 185);
+                height: 50px;
+                width: 120px;
+                background-color: rgb(69, 69, 185);
+                color: white;
+                cursor: pointer;
             }
 
             #newtweet {
@@ -89,6 +90,7 @@ export default {
             &.exceeded {
                 color: red;
                 button {
+                    margin-top: 0.5em;
                     background-color: red;
                     border: none;
                     color: white;

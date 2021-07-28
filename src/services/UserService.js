@@ -2,6 +2,7 @@ import axio from "axios"
 
 axio.defaults.withCredentials = true
 const path = 'https://vuejswebsite.herokuapp.com'
+//const path = 'http://localhost:5000'
 export default {
     async auth(){
         let auth = await axio.get(path+"/users/auth")

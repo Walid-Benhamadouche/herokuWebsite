@@ -1,22 +1,24 @@
 <template>
-    <h1><strong>Sign Up</strong></h1>
-    <form action="" class="signUp" @submit.prevent="signUpUser">
-        <label for="email">E-mail</label>
-        <input id="email" type="text" v-model="userData.Email"/>
-        <label for="password">Password</label>
-        <input id="password" type="text" v-model="userData.password"/>
-        <label for="confirmpassword">Confirm password</label>
-        <input id="confirmpassword" type="text" v-model="userData.confpassword"/>
-        <label for="username">Username</label>
-        <input id="username" type="text" v-model="userData.UserName"/>
-        <label for="firsname">Firsname</label>
-        <input id="firsname" type="text" v-model="userData.FirstName"/>
-        <label for="lastname">Lastname</label>
-        <input id="lastname" type="text" v-model="userData.LastName"/>
-        <button>
-            Sign Up
-        </button>
-    </form>
+    <div class="card">
+        <h2 class="title">Sign Up</h2>
+        <form class="email_sign_up" action="" @submit.prevent="signUpUser">
+            <label for="email">E-mail</label>
+            <input id="email" type="text" v-model="userData.Email"/>
+            <label for="password">Password</label>
+            <input id="password" type="password" v-model="userData.password"/>
+            <label for="confirmpassword">Confirm password</label>
+            <input id="confirmpassword" type="password" v-model="userData.confpassword"/>
+            <label for="username">Username</label>
+            <input id="username" type="text" v-model="userData.UserName"/>
+            <label for="firsname">Firsname</label>
+            <input id="firsname" type="text" v-model="userData.FirstName"/>
+            <label for="lastname">Lastname</label>
+            <input id="lastname" type="text" v-model="userData.LastName"/>
+            <button class="button">
+                Sign Up
+            </button>
+        </form>
+    </div>
 </template>
 
 <script>
@@ -59,8 +61,62 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.signUp{
+.card {
+  font-family: sans-serif;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2em;
+  margin-bottom:1em;
+  border-radius: 10px;
+  background-color: #2d3436;
+  padding: 1.8rem;
+  box-shadow: 2px 5px 20px rgba(0, 0, 0, 0.1);
+
+  .title {
+    text-align: center;
+    font-weight: bold;
+    margin: 0;
+    color: white;
+  }
+  .email_sign_up {
     display: flex;
     flex-direction: column;
+
+    label {
+        color: #aaa6a6;
+    }
+    input[type="text"],
+    input[type="password"] {
+        padding: 12px 17px;
+        margin-top: 5px;
+        margin-bottom: 12px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-sizing: border-box;
+    }
+    .button {
+        background-color: rgb(84, 84, 223);
+        color: white;
+        padding: 15px 17px;
+        margin-top: 8px;
+        margin-bottom: 15px;
+        width: 100%;
+        border-radius: 10px;
+        border: none;
+        transition: 0.25s;
+    }
+    .button:hover {
+        background-color: rgb(69, 69, 185);
+        color: white;
+        padding: 15px 17px;
+        margin-top: 8px;
+        margin-bottom: 15px;
+        width: 100%;
+        border-radius: 10px;
+        border: none;
+        cursor: pointer;
+    }
+  }
 }
 </style>

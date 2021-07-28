@@ -10,7 +10,7 @@
         {{user.UserName}}
       </router-link>
     </nav>
-    <router-view @openChat="openChat"/>
+    <router-view :key="$route.fullPath" @openChat="openChat"/>
   </div>
 </template>
 
