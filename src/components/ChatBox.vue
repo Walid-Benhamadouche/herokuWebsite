@@ -103,13 +103,14 @@ export default {
 .chat-box {
       margin: 0%;
       border: 0%;
-      padding-left: 21%;
+      padding-left: 22%;
       padding-top: 30%;
       background-color: #2d3436;
       position: fixed;
       bottom: 0;
       right : 1%;
       color: white;
+      z-index: 2;
 
       .chat-box__name-bar {
         text-align: center;
@@ -163,8 +164,8 @@ export default {
       .chat-box__body {
         margin: 0;
         border: 0%;
-        width: 100.1%;
-        height: 72.7%;
+        width: 100%;
+        height: 73%;
         border-left: 1.5px solid #2d3436;
         border-right: 1.5px solid #2d3436;
         border-bottom: 1.5px solid #2d3436;

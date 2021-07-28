@@ -89,9 +89,9 @@ export default {
     }
     input[type="text"],
     input[type="password"] {
-        padding: 12px 17px;
-        margin-top: 5px;
-        margin-bottom: 12px;
+        padding: 10px 15px;
+        margin-top: 3px;
+        margin-bottom: 10px;
         border: 1px solid #ccc;
         border-radius: 8px;
         box-sizing: border-box;
@@ -99,9 +99,9 @@ export default {
     .button {
         background-color: rgb(84, 84, 223);
         color: white;
-        padding: 15px 17px;
-        margin-top: 8px;
-        margin-bottom: 15px;
+        padding: 12px 14px;
+        margin-top: 5px;
+        margin-bottom: 12px;
         width: 100%;
         border-radius: 10px;
         border: none;
@@ -110,9 +110,9 @@ export default {
     .button:hover {
         background-color: rgb(69, 69, 185);
         color: white;
-        padding: 15px 17px;
-        margin-top: 8px;
-        margin-bottom: 15px;
+        padding: 12px 14px;
+        margin-top: 5px;
+        margin-bottom: 12px;
         width: 100%;
         border-radius: 10px;
         border: none;
