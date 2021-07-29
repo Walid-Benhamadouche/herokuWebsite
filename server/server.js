@@ -81,7 +81,15 @@ app.use('/follow', follow)
 app.use('/chat', chat)
 
 app.use('/', serveStatic(path.join(__dirname, '/..', '/dist')))
-console.log('/', path.join(__dirname, '/..', '/dist'))
+
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
+app.set('views',path.join(__dirname, '/..', '/dist'));
+
+app.get('*', (req, res)=> {
+    res.render('\index.html')
+})
+
 
 const port = process.env.PORT || 5000
 
