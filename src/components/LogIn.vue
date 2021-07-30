@@ -1,4 +1,7 @@
 <template >
+    <div v-if="login.logingIn" class="loader_parent">
+        <div class="loader"></div>
+    </div>
     <div class="card">
         <h2 class="title">Log In</h2>  
         <form class="email_login" action="" @submit.prevent="logInUser">
@@ -23,12 +26,14 @@ export default {
     setup(){
         const login = reactive({
             Email: '',
-            HashCode: ''
+            HashCode: '',
+            logingIn: false
         })
 
         function logInUser(){
             if(login.Email !='' && login.HashCode !=''){
                 console.log("calling log in")
+                login.logingIn = true
                 UserService.logIn(login)
                 .then(user => {
                     console.log(user)
@@ -62,6 +67,29 @@ export default {
         display: block;
     }
 }*/
+.loader_parent{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: #0e1011e1;
+    z-index: 50;
+    .loader {
+        position: relative;
+        top: 50%;
+        left: 50%;
+        border: 5px solid #ffffff00;
+        border-radius: 50%;
+        border-top: 5px solid #3498db;
+        width: 25px;
+        height: 25px;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+}
 .card {
   font-family: sans-serif;
   width: 300px;

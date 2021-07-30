@@ -24,10 +24,7 @@ const io = require('socket.io')(server, {
 
 io.on('connection', (socket) => {
     people[socket.handshake.query.userId] = socket.id
-    //console.log("socket.id", people)
     socket.on('message', (message) => {
-        //console.log("on message ", message);
-        //console.log("socket.id from table",people);
         io.to(people[message.receiverId]).emit('message', message );
     });
 })

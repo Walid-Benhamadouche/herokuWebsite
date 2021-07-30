@@ -6,7 +6,6 @@ const path = 'https://vuejswebsite.herokuapp.com'
 export default {
     async auth(){
         let auth = await axio.get(path+"/users/auth")
-        console.log(auth.data.loggedIn)
         return auth.data
     },
     async getUser(){
@@ -14,14 +13,11 @@ export default {
         return user.data
     },
     async getUserId(data){
-        console.log("this is the sent data", data)
         let user = await axio.get(path+"/users/getUserId", {params: data});
         return user.data
     },
     async logIn(data){
-        console.log(data)
         let user = await axio.get(path+"/users/login", {params: data});
-        console.log(user.data)
         return user.data
     },
     async signUp(data){
@@ -50,7 +46,6 @@ export default {
     },
     async unFollow(data){
         let unfollow = await axio.delete(path+"/follow/unfollow", {params: data})
-        console.log(unfollow.data)
         return unfollow.data
     },
     async makeChatRoom(data){

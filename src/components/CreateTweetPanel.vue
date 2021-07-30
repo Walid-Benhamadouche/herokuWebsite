@@ -77,6 +77,8 @@ export default {
             }
 
             #newtweet {
+                font-size: 15px;
+                color: white;
                 border-radius: 20px;
                 border: 1.5px solid #2d3436;
                 height: 60%;
