@@ -174,7 +174,7 @@ export default {
         }
         else state.room = room._id
         var instance = createApp(chat, {
-              chatName: user.UserLoaded.UserName,
+              chatName: user.UserLoaded.FirstName+" "+user.UserLoaded.LastName,
               ProfileName: userProfileName,
               chatId: state.room,
               senderId: userProfileId.value,

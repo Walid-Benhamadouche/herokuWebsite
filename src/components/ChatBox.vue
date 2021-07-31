@@ -1,7 +1,7 @@
 <template>
     <div class="chat-box">
       <div class="chat-box__name-bar"><p>{{chatName}}</p></div>
-      <ul class="chat-box__body">
+      <ul id="messages" class="chat-box__body">
           <li v-for="(message,index) in discussion.messages" :key="index">
             <p class="received" v-if="message.Mtype === 'received'">{{message.message}}</p>
             <p class="sent" v-if="message.Mtype === 'sent'">{{message.message}}</p>
@@ -76,9 +76,15 @@ export default {
               discussion.messages.push({message: msg.body, time: msg.date, userName: msg.userName, Mtype: messageType})
             }
           })
-          
+          document.getElementById('messageToSend').onkeypress = function(e){
+          if (!e) e = window.event;
+          var keyCode = e.code || e.key;
+          if (keyCode == 'Enter'){
+            sendMessage()
+            return false;
+          }
+        }
         })
-
         function sendMessage(){
           let message = document.getElementById("messageToSend").value
           UserService.sendMessage({
@@ -103,8 +109,8 @@ export default {
 .chat-box {
       margin: 0%;
       border: 0%;
-      padding-left: 22%;
-      padding-top: 30%;
+      padding-left: 295px;
+      padding-top: 405px;
       background-color: #2d3436;
       position: fixed;
       bottom: 0;
@@ -145,6 +151,7 @@ export default {
           height: 60%;
           width: 67%;
           background-color: #212627;
+          color: white;
           position: absolute;
           top: 16%;
           right: 16%
@@ -156,8 +163,28 @@ export default {
         .chat-box__send {
           width: 14%;
           position: absolute;
-          top: 30%;
           right: 1%;
+          top: 15%;
+          background-color: rgb(84, 84, 223);
+          color: white;
+          padding: 6px;
+          margin-top: 5px;
+          margin-bottom: 5px;
+          margin-left: 10px;
+          border-radius: 10px;
+          border: none;
+          transition: 0.25s;
+        }
+        .chat-box__send:hover {
+          background-color: rgb(69, 69, 185);
+          color: white;
+          padding: 6px;
+          margin-top: 5px;
+          margin-bottom: 5;
+          margin-left: 10px;
+          border-radius: 10px;
+          border: none;
+          cursor: pointer;
         }
 
       }
@@ -169,14 +196,15 @@ export default {
         border-left: 1.5px solid #2d3436;
         border-right: 1.5px solid #2d3436;
         border-bottom: 1.5px solid #2d3436;
+        border-top: 1.5px solid #2d3436;
         background-color: #212627;
         position: absolute;
         bottom: 12%;
+        padding-left: 0;
         right: 0;
         list-style-type: none;
-        padding: 0%;
-        margin: 0%;
-        overflow-y: auto;
+        margin: 0;
+        overflow-y: scroll;
 
           .sent {
             position: relative;
